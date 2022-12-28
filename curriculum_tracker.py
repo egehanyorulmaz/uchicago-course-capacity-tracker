@@ -15,7 +15,6 @@ from config.credentials import *
 from helpers.utils import batch_generator
 from helpers.parsing import get_course, get_class_name, get_section_capacity
 
-# driver = webdriver.Chrome(ChromeDriverManager().install())
 options = webdriver.ChromeOptions()
 options.add_argument("start-maximized") #open Browser in maximized mode
 options.add_argument("disable-infobars") # disabling infobars
@@ -48,12 +47,9 @@ print('Submitting the credentials')
 
 time.sleep(60)
 #### START ####
-# Authentication için gereken push notification burada atılmalı. Gelen push manual olarak telefondan onaylanacak.
+# Authentication layer / DUO Push
 
 #### END ####
-
-
-# driver.find_element(By.PARTIAL_LINK_TEXT, "Classes Self-Service.")
 
 button_to_click = WebDriverWait(driver, 10).until(
     EC.element_to_be_clickable(
@@ -61,7 +57,6 @@ button_to_click = WebDriverWait(driver, 10).until(
     )
 )
 button_to_click.click()
-# driver.find_element(By.XPATH, '//*[@id="quicklinks-module"]/a[2]').click()
 print("My Classes Clicked.")
 
 select = Select(driver.find_element(By.ID, 'UC_CLSRCH_WRK2_SUBJECT'))
@@ -91,7 +86,7 @@ for start, end in batches:
     time.sleep(15)
     html = driver.page_source
     soup = BeautifulSoup(html,
-                         'html5lib')  # If this line causes an error, run 'pip install html5lib' or install html5lib
+                         'html5lib')
 
     course_numbers = list(range(start, end))
     for course_no in course_numbers:
@@ -102,7 +97,7 @@ for start, end in batches:
             [class_name, section_code, section_condition, section_type, total_capacity, current_capacity])
 
     time.sleep(5)
-    # next_button = driver.find_element(By.XPATH, '//*[@id="UC_RSLT_NAV_WRK_SEARCH_CONDITION2$46$"]')
+
     try:
         next_button = driver.find_element(By.XPATH, '//*[@id="UC_RSLT_NAV_WRK_SEARCH_CONDITION2"]', )
         if next_button:
