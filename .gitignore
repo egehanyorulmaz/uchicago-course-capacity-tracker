@@ -152,4 +152,5 @@ cython_debug/
 .idea/
 
 # To secure credentials
-config/credentials.py
+credentials.py
+config/credentials.py~
