@@ -1,4 +1,4 @@
-After spending hours on the website just to add the classes that I want, I decided to create this repository so that the available spots in each course will be checked in certain intervals.
+After spending hours on the website just to add the classes that I want, I decided to create this repository so that the available spots in each course will be checked automatically.
 
 To use this repository:
  1. You should add your credentials to the uchicago-course-capacity-tracker/config/credentials. This information will stay at your local machine, and will not be shared with anybody. 
